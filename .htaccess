@@ -1,0 +1,47 @@
+## Turn on rewrite engine
+RewriteEngine on
+Options -Indexes +FollowSymLinks
+
+# Handle my links
+RewriteRule ^$ appweb/Views/login.php [L]
+RewriteRule ^masuk$ appweb/Views/login.php [L]
+RewriteRule ^actLogin$ appweb/Controllers/Login.php [L]
+
+RewriteRule ^daftar$ appweb/Views/register.php [L]
+RewriteRule ^actRegister$ appweb/Controllers/Register.php [L]
+
+RewriteRule ^keluar$ logout.php [L]
+RewriteRule ^keluar-edit$ logout-edit.php [L]
+
+RewriteRule ^dashboard$ template.php?module=dashboard [L]
+
+RewriteRule ^profil/identitas$ template.php?module=profil&act=identitas [L]
+RewriteRule ^profil/dokumen$ template.php?module=profil&act=dokumen [L]
+RewriteRule ^profil/keamanan$ template.php?module=profil&act=keamanan [L]
+
+RewriteRule ^editIdentitas$ appweb/Controllers/Profile.php?act=edit-identitas [L]
+RewriteRule ^editDokumen$ appweb/Controllers/Profile.php?act=edit-dokumen [L]
+RewriteRule ^resetDokumen$ appweb/Controllers/Profile.php?act=reset-dokumen [L]
+RewriteRule ^editKeamananAkun$ appweb/Controllers/Profile.php?act=edit-keamanan-akun [L]
+
+RewriteRule ^penerimaan$ template.php?module=penerimaan&act=list [L]
+RewriteRule ^actionLamaran/([0-9]+)$ appweb/Controllers/Penerimaan.php?act=lamar&id=$1 [L]
+
+RewriteRule ^404$ /appweb/Views/404.php [L]
+
+##### Deny access to htaccess ###############################
+<files .htaccess>
+    order allow,deny
+    deny from all
+</files>
+
+##### Not Found ###############################
+ErrorDocument 404 /appweb/Views/404.php
+##### Forbidden ###############################
+ErrorDocument 403 /appweb/Views/403.php
+##### Internal Server Error
+ErrorDocument 500 /appweb/Views/500.php
+##### Bad Request ###############################
+ErrorDocument 400 /appweb/Views/400.php
+##### Unauthorised ###############################
+ErrorDocument 401 /appweb/Views/401.php

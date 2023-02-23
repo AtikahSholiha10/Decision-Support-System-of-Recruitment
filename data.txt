@@ -1,0 +1,108 @@
+=== KEBUTUHAN DATABASE =====
+	data_admin
+		- id_data_admin 		(PK)
+		- username
+		- password
+		- nama
+		- avatar
+		- slug
+		- session
+		- terakhir_login
+
+	data_user
+		- id_data_user			(PK)
+		- id_identitas_user		(FK)
+		- id_dokumen_user		(FK)
+		- username
+		- password
+		- status  				(Active, Non-Active)
+		- status_identitas 		('Kosong', 'Ada')
+		- status_dokumen 		('Kosong', 'Ada')
+		- slug
+		- session
+		- terakhir_login
+
+	identitas_user
+		- id_identitas_user		(PK)
+		- id_data_user			(FK)
+		- nik
+		- nama_lgkp
+		- alamat_lgkp
+		- tmpt_lhr
+		- tgl_lhr
+		- email
+		- no_hp
+		- jk 					('Pria','Wanita')
+		- stts_perkawinan 		('Menikah','Belum','Menikah')
+		- agama 				('Islam','Kristen','Katolik','Hindu','Buddha','Konghucu')
+		- pend_trkhr			('SMA','SMK','D2','D3','D4','S1','S2')
+		- jurusan
+
+	dokumen_user
+		- id_dokumen_user		(PK)
+		- id_data_user			(FK)
+		- surat_lamaran			(pdf)
+		- cv					(pdf)
+		- foto3x4 				(jpg, jpeg, png)
+		- ktam					(pdf)
+		- ktp					(pdf)
+		- sks					(pdf)
+		- skck					(pdf)
+		- ijazah				(pdf)
+		- transkrip_nilai		(pdf)
+		- sertifikat_pendukung	(pdf)
+
+	lowongan
+		- id_lowongan	(PK)
+		- nama_sekolah
+		- jabatan
+		- status 		('Active','Non-Active')
+		- slug
+
+	pelamar
+		- id_pelamar	(PK)
+		- id_data_user	(FK)
+		- id_lowongan	(FK)
+		- c1
+		- c2
+		- c3
+		- c4
+		- c5
+		- c6
+		- c7
+		- c8
+		- c9
+		- c10
+		- c11
+		- status 		('Dinilai','Belum')
+
+=== KEBUTUHAN HALAMAN =====
+	
+	Halaman User
+		- Dashboard
+			- Notifikasi jika belum melengkapi Identitas Diri & Dokumen
+			- Notifikasi jika data diri lengkap
+		- Profile
+			- Identitas Diri
+			- Dokumen
+		- Penerimaan
+
+	Halaman Admin
+		- Dashboard
+			- Penerimaan
+			- Pelamar
+			- User
+		- Data Pelamar
+			- Data Penerimaan
+				- Data Pelamar
+			- Rincian Nilai
+				- Menisi Nilai
+		- Data Penerimaan
+			- Data Lowongan
+			- Data Kriteria
+		- Data User
+			- Data User
+				- Export to excel
+			- Detail User
+		- Perhitungan
+			Ditampilkan pula table normalisasi dan nilai preferensi, Sorting by nilai preferensi tertinggi
